@@ -1,24 +1,31 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from "react-router-dom";
 
-export const Login = (props) => {
+const Login =  (props) => {
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const validatePassword = useCallback(() => {
         if(userName === '') {
-            return false;
+            console.log(false);
         }
         const validPassword = userName.replace(/[aeiou]/ig,'');
-        return validPassword === password;
-    }, [password, userName]);
+        if(validPassword === password) {
+            navigate('/weather');
+        }
+        console.log(validPassword)
+        console.log(validPassword === password);
+    }, [password, userName, navigate]);
 
     return (<div>
-        <input onChange={(event) => setUserName(event)}></input>
-        <input onChange={(event) => setPassword(event)}></input>
+        <input placeholder="Username" onChange={(event) => setUserName(event.target.value)}></input>
+        <input placeholder="Password" type="password" onChange={(event) => setPassword(event.target.value)}></input>
 
-        <button onClick={validatePassword}></button>
+        <button onClick={validatePassword}>Login</button>
     </div>)
 
-
 }
+
+export default Login;
