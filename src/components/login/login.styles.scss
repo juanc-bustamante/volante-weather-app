@@ -1,0 +1,21 @@
+.login{
+    display: flex;
+    .login-div {
+        flex: 1;
+        background-color: cadetblue;
+    }
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        margin: 101px;
+        width: 40%;
+
+    .login-error {
+        color: red;
+    }
+
+    .login-button {
+
+    }
+    }
+}
